@@ -1,7 +1,8 @@
 import pygame
+from player import Player
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from logger import log_state
-from player import Player
+
 
 def main():
     pygame.init()
@@ -17,17 +18,19 @@ def main():
     
     while True:
         log_state()
+        dt = clock.tick(60) / 1000.0
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
             
         screen.fill("black")
+        player.update(dt)
         player.draw(screen)
         pygame.display.flip()
         
         
-        dt = clock.tick(60) / 1000.0
+        
         
         
 
